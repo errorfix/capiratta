@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capriatta | Join & Events</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for background and font */
+        /* Enhanced Text Effects */
+        .text-shadow-lg {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enhanced Login Box Effects */
+        #login-screen {
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        #login-screen:hover {
+            box-shadow:
+                0 35px 60px -12px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        /* Enhanced Card Alignment */
+        .elegant-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .elegant-card .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .elegant-card .card-button {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Main Container -->
+    <div id="app-container" class="w-full max-w-screen-2xl">
+
+        <!-- Login/Registration Card (Initial View) -->
+        <div id="login-screen" class="w-full max-w-md mx-auto p-8 bg-white/95 backdrop-blur-xl shadow-2xl rounded-3xl border border-white/30 transition-all duration-500 ease-in-out transform scale-100 hover:shadow-3xl">
+            <div class="flex flex-col items-center mb-8">
+                <!-- Logo and Name Container -->
+                <div class="flex items-center justify-center space-x-3 mb-2">
+                    <!-- Logo Image -->
+                    <div class="w-16 h-16 flex-shrink-0">
+                        <img src="logo.png" alt="Capriatta Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Capriatta</h1>
+                </div>
+                <p class="text-gray-500 text-sm mt-1">Join our community platform</p>
+            </div>
+
+            <form id="registration-form" class="space-y-5">
+                <!-- Name -->
+                <div>
+                    <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                    <input type="text" id="name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 placeholder-gray-400" placeholder="Enter your full name">
+                </div>
+
+                <!-- College Name -->
+                <div>
+                    <label for="college" class="block text-sm font-semibold text-gray-700 mb-2">College Name</label>
+                    <input type="text" id="college" required class="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 placeholder-gray-400" placeholder="Enter your college name">
+                </div>
+
+                <!-- Course Name -->
+                <div>
+                    <label for="course" class="block text-sm font-semibold text-gray-700 mb-2">Course Name</label>
+                    <input type="text" id="course" required class="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 placeholder-gray-400" placeholder="e.g., Computer Science">
+                </div>
+
+                <!-- Course Year -->
+                <div>
+                    <label for="year" class="block text-sm font-semibold text-gray-700 mb-2">Course Year</label>
+                    <select id="year" required class="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 bg-white transition-all duration-200">
+                        <option value="">Select your year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                        <option value="PG">Post Graduate</option>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:via-purple-700 hover:to-indigo-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:ring-offset-2">
+                    <span class="flex items-center justify-center space-x-2">
+                        <span>Enter Dashboard</span>
+                        <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Club Dashboard (Hidden initially) -->
+        <div id="dashboard-screen" class="p-12 md:p-20 lg:p-24 xl:p-32 bg-white shadow-xl rounded-2xl hidden opacity-0 transition duration-500 ease-in-out">
+
+            <!-- Dashboard Header -->
+            <div class="mb-16 lg:mb-20 xl:mb-24 text-center relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl blur-xl"></div>
+                <div class="relative z-10">
+                    <!-- Logo and Title Row -->
+                    <div class="flex items-center justify-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 rounded-2xl flex items-center justify-center mr-4 shadow-xl">
+                            <img src="logo.png" alt="Capriatta Logo" class="w-12 h-12 object-contain rounded-lg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <!-- Fallback Icon (hidden by default) -->
+                            <svg class="w-12 h-12 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.828-1.157L17 20zM7 13a6 6 0 1112 0v1a3 3 0 01-3 3H7a3 3 0 01-3-3v-1a6 6 0 013-3zM10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h1 class="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-indigo-800 to-gray-900 bg-clip-text text-transparent mb-2 text-shadow-lg">Capriatta Dashboard</h1>
+                            <p class="text-gray-600 text-lg lg:text-xl font-medium">Your personalized community experience awaits</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center items-center space-x-2">
+                        <div class="w-3 h-3 bg-indigo-400 rounded-full animate-pulse"></div>
+                        <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                        <div class="w-3 h-3 bg-pink-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Club & Communities Join Options Container (NEW SECTION) -->
+            <div class="mb-20 lg:mb-24 xl:mb-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 xl:gap-12 place-items-center auto-rows-fr">
+                
+                <!-- Card 1: Join Clubs -->
+                <div class="group relative p-10 lg:p-12 xl:p-16 bg-gradient-to-br from-blue-50 via-white to-blue-50 rounded-2xl border border-blue-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden elegant-card">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-transform duration-700"></div>
+
+                    <div class="relative z-10 card-content">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.828-1.157L17 20zM7 13a6 6 0 1112 0v1a3 3 0 01-3 3H7a3 3 0 01-3-3v-1a6 6 0 013-3zM10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-700 mb-4 group-hover:text-blue-800 transition-colors duration-300">Join Clubs</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Explore and join various clubs based on your interests. Connect with like-minded individuals and participate in club activities.
+                        </p>
+                        <button onclick="openClubsModal()" class="w-full py-4 px-6 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl card-button">
+                            Browse Clubs
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Open Communities (Networking & Discussion) -->
+                <div class="group relative p-10 lg:p-12 xl:p-16 bg-gradient-to-br from-green-50 via-white to-green-50 rounded-2xl border border-green-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden elegant-card">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-transform duration-700"></div>
+
+                    <div class="relative z-10 card-content">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-700 mb-4 group-hover:text-green-800 transition-colors duration-300">Open Communities</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Connect with various communities for discussions, resources, and activities.
+                        </p>
+                        
+                        <button onclick="openCommunitiesModal()" class="w-full py-4 px-6 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl card-button">
+                            Browse Communities
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Create Project -->
+                <div class="group relative p-10 lg:p-12 xl:p-16 bg-gradient-to-br from-purple-50 via-white to-purple-50 rounded-2xl border border-purple-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden elegant-card">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-purple-600/20 rounded-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-transform duration-700"></div>
+
+                    <div class="relative z-10 card-content">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-purple-700 mb-4 group-hover:text-purple-800 transition-colors duration-300">Create Project</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Start your own project and bring your innovative ideas to life with our platform.
+                        </p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="w-full py-4 px-6 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl card-button flex items-center justify-center">
+                            Create Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: New Startup -->
+                <div class="group relative p-10 lg:p-12 xl:p-16 bg-gradient-to-br from-orange-50 via-white to-orange-50 rounded-2xl border border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden elegant-card">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-transform duration-700"></div>
+
+                    <div class="relative z-10 card-content">
+                        <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-orange-700 mb-4 group-hover:text-orange-800 transition-colors duration-300">New Startup</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Launch your entrepreneurial journey with mentorship, funding opportunities, and a supportive community.
+                        </p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="w-full py-4 px-6 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl card-button flex items-center justify-center">
+                            Start Startup
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Club & Communities Section -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-indigo-800 to-gray-900 bg-clip-text text-transparent mb-4">Capriatta Events</h2>
+                <p class="text-gray-600 text-lg">Discover amazing upcoming events and opportunities</p>
+                <div class="mt-4 flex justify-center items-center space-x-2">
+                    <div class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></div>
+                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                    <div class="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                </div>
+            </div>
+
+            <div id="events-list" class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+
+                <!-- Event Card 1: TechFest -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-red-50 via-white to-red-50 rounded-2xl border border-red-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-red-700 bg-gradient-to-r from-red-100 to-red-200 px-4 py-2 rounded-full mr-3 shadow-sm">Tech</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-red-200 to-red-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full animate-pulse" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-red-800 transition-colors duration-300">TechFest 2024: The Future Now</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            A flagship technical event featuring hackathons, coding competitions, robotics workshops, and expert talks on AI/ML and blockchain. Don't miss the chance to innovate!
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Oct 28 - Oct 30</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span>Main Auditorium</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 2: ZEST (Cultural/Sports) -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-blue-50 via-white to-blue-50 rounded-2xl border border-blue-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-blue-700 bg-gradient-to-r from-blue-100 to-blue-200 px-4 py-2 rounded-full mr-3 shadow-sm">Culture</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-blue-200 to-blue-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full animate-pulse" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-blue-800 transition-colors duration-300">ZEST: Annual Cultural Gala</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            The biggest cultural and sports extravaganza of the year. Includes dance, drama, music, poetry slams, and inter-department sports tournaments.
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-blue-600 bg-blue-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Nov 15 - Nov 17</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span>College Grounds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 3: Startup Weekend -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-yellow-50 via-white to-yellow-50 rounded-2xl border border-yellow-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-yellow-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-yellow-700 bg-gradient-to-r from-yellow-100 to-yellow-200 px-4 py-2 rounded-full mr-3 shadow-sm">Startup</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-yellow-200 to-yellow-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full animate-pulse" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-yellow-800 transition-colors duration-300">100-Hour Pitch Challenge</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Form a team, validate an idea, build a prototype, and pitch to real investors in 100 intense hours. Cash prizes and mentorship up for grabs!
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-yellow-600 bg-yellow-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Dec 5 - Dec 9</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                <span>Incubation Center</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Event Card 4: Design Workshop -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-purple-50 via-white to-purple-50 rounded-2xl border border-purple-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-purple-700 bg-gradient-to-r from-purple-100 to-purple-200 px-4 py-2 rounded-full mr-3 shadow-sm">Design</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-purple-200 to-purple-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full animate-pulse" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-purple-800 transition-colors duration-300">UI/UX Figma Masterclass</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            An intensive workshop focusing on creating user-centric designs using Figma. Perfect for beginners and those looking to polish their portfolio.
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-purple-600 bg-purple-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Jan 20</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                <span>Design Lab 404</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 5: Convocation -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-emerald-50 via-white to-emerald-50 rounded-2xl border border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-emerald-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-emerald-700 bg-gradient-to-r from-emerald-100 to-emerald-200 px-4 py-2 rounded-full mr-3 shadow-sm">Ceremony</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-emerald-200 to-emerald-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full animate-pulse" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-emerald-800 transition-colors duration-300">Annual Convocation 2024</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Celebrate academic achievements and milestones with our graduating students. Join us for the prestigious convocation ceremony.
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-emerald-600 bg-emerald-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Feb 15</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                <span>Grand Auditorium</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 6: Alumni Meet -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-amber-50 via-white to-amber-50 rounded-2xl border border-amber-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-amber-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-amber-700 bg-gradient-to-r from-amber-100 to-amber-200 px-4 py-2 rounded-full mr-3 shadow-sm">Alumni</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-amber-200 to-amber-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-amber-500 to-amber-600 rounded-full animate-pulse" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-amber-800 transition-colors duration-300">Alumni Homecoming 2024</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Reconnect with former students and celebrate the achievements of our distinguished alumni network spanning decades.
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-amber-600 bg-amber-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Mar 10</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span>Alumni Hall</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 7: Induction Session -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-cyan-50 via-white to-cyan-50 rounded-2xl border border-cyan-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-cyan-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-cyan-700 bg-gradient-to-r from-cyan-100 to-cyan-200 px-4 py-2 rounded-full mr-3 shadow-sm">Welcome</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-cyan-200 to-cyan-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full animate-pulse" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-cyan-800 transition-colors duration-300">Freshman Induction 2024</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Welcome new students to our vibrant community. Learn about campus life, academic resources, and student support services.
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-cyan-600 bg-cyan-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Apr 5</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                <span>Welcome Center</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 8: Career Launch -->
+                <div class="group relative p-8 lg:p-10 xl:p-12 bg-gradient-to-br from-rose-50 via-white to-rose-50 rounded-2xl border border-rose-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
+                    <!-- Card Background Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-bold text-rose-700 bg-gradient-to-r from-rose-100 to-rose-200 px-4 py-2 rounded-full mr-3 shadow-sm">Career</span>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-rose-200 to-rose-300 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-rose-500 to-rose-600 rounded-full animate-pulse" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4 group-hover:text-rose-800 transition-colors duration-300">Career Launch Workshop</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Jumpstart your professional journey with resume building, interview skills, and networking opportunities with industry leaders.
+                        </p>
+                        <div class="flex justify-between items-center text-xs font-medium">
+                            <div class="flex items-center space-x-1 text-rose-600 bg-rose-50 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>May 12</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                <span>Career Hub</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Back button (for demonstration/reset) -->
+            <div class="mt-16 lg:mt-20 xl:mt-24 text-center">
+                <button id="logout-button" class="group relative px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-700 hover:text-gray-900 font-medium rounded-xl transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg border border-gray-300 hover:border-gray-400">
+                    <span class="flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg>
+                        <span>Not you? Reset details</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Communities Modal -->
+    <div id="communities-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="sticky top-0 bg-white p-6 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-gray-800">Available Communities</h3>
+                <button onclick="closeCommunitiesModal()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Communities List -->
+            <div class="p-6 space-y-4">
+                <!-- Branding -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Branding</h4>
+                                <p class="text-sm text-gray-500">For all branding and design-related discussions</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Controls</h4>
+                                <p class="text-sm text-gray-500">System controls and configurations</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Attendance -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Attendance</h4>
+                                <p class="text-sm text-gray-500">Track and manage attendance</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Grievance -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Grievance</h4>
+                                <p class="text-sm text-gray-500">Report and track issues</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fine Arts -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.486M7 17h.01"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Fine Arts</h4>
+                                <p class="text-sm text-gray-500">For creative arts and design</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Discipline -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Discipline</h4>
+                                <p class="text-sm text-gray-500">Community guidelines and discipline</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clubs Modal -->
+    <div id="clubs-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="sticky top-0 bg-white p-6 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-gray-800">Available Clubs</h3>
+                <button onclick="closeClubsModal()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Clubs List -->
+            <div class="p-6 space-y-4">
+                <!-- Mac Club -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Mac Club</h4>
+                                <p class="text-sm text-gray-500">For Apple enthusiasts and developers</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coding Club -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Coding Club</h4>
+                                <p class="text-sm text-gray-500">For programming enthusiasts and developers</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Band Club -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Band</h4>
+                                <p class="text-sm text-gray-500">For music lovers and performers</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dance Club -->
+                <div class="group p-6 border border-gray-200 rounded-xl hover:shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">Dance Club</h4>
+                                <p class="text-sm text-gray-500">For dance enthusiasts of all styles</p>
+                            </div>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRSLdkRmH3SjvWyGm3ok5y4C2yF1YTMQDKY3dVdx9FQnb8aw/viewform?usp=dialog" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-block">
+                            Join
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Configuration ---
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScQZ_x1F2w8e4S7j9Qp9WfK3iL6qg_g4wRj5oVz0fM7tH8yvQ/viewform?usp=sf_link";
+
+        // --- DOM Elements ---
+        const loginScreen = document.getElementById('login-screen');
+        const dashboardScreen = document.getElementById('dashboard-screen');
+        const registrationForm = document.getElementById('registration-form');
+        const logoutButton = document.getElementById('logout-button');
+
+        // --- View Management ---
+        function switchView(view) {
+            if (view === 'dashboard') {
+                // Hide login screen
+                loginScreen.classList.add('hidden');
+                loginScreen.classList.remove('opacity-100', 'scale-100');
+                
+                // Show dashboard
+                dashboardScreen.classList.remove('hidden');
+                // Force reflow to ensure the transition works
+                void dashboardScreen.offsetWidth;
+                dashboardScreen.classList.add('opacity-100');
+                
+                // Scroll to top when switching to dashboard
+                window.scrollTo(0, 0);
+            } else {
+                // Hide dashboard
+                dashboardScreen.classList.add('opacity-0');
+                setTimeout(() => {
+                    dashboardScreen.classList.add('hidden');
+                }, 300);
+                
+                // Show login screen
+                loginScreen.classList.remove('hidden');
+                loginScreen.classList.add('opacity-100', 'scale-100');
+            }
+        }
+
+        // --- Form Handling ---
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            // In a real app, you would validate the form and make an API call here
+            switchView('dashboard');
+        }
+
+        // --- Modal Functions ---
+        function openClubsModal() {
+            document.getElementById('clubs-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeClubsModal() {
+            document.getElementById('clubs-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function openCommunitiesModal() {
+            document.getElementById('communities-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCommunitiesModal() {
+            document.getElementById('communities-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function joinClub(clubName) {
+            showNotification(`Joining ${clubName}...`, 'success');
+            setTimeout(() => {
+                closeClubsModal();
+            }, 1500);
+        }
+
+        function joinCommunity(communityName) {
+            showNotification(`Joining ${communityName}...`, 'success');
+            setTimeout(() => {
+                closeCommunitiesModal();
+            }, 1500);
+        }
+
+        // --- Notification Function ---
+        function showNotification(message, type = 'info') {
+            // Simple notification implementation
+            alert(`${type.toUpperCase()}: ${message}`);
+        }
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start with login screen
+            switchView('login');
+            
+            // Form submission
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', handleFormSubmit);
+            }
+            
+            // Logout button
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => switchView('login'));
+            }
+        });
+
+    </script>
+</body>
+</html>
